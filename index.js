@@ -44,7 +44,11 @@ const suggestionOptions = {
 const { isSuggestedCommitAccepted } = await yargsInteractive().usage("$0 <command> [args]").interactive(suggestionOptions)
 
 
-if (isSuggestedCommitAccepted) applyCommit(suggestedCommit)
+if (isSuggestedCommitAccepted) {
+    const { error } = applyCommit(suggestedCommit)
+    if (!error) console.log(chalk.green("All done! ✅"))
+    process.exit()
+}
 
 if (!isSuggestedCommitAccepted) {
     const customCommitOptions = {
