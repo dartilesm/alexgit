@@ -47,9 +47,9 @@ const { isSuggestedCommitAccepted } = await yargsInteractive().usage("$0 <comman
 function makeCommit(commit) {
     const { error, data } = applyCommit(commit)
     if (!error) console.log(`
-        ${chalk.green("All done! ✅")}
-        
-        ${data}
+${chalk.green("All done! ✅")}
+
+${data}
     `)
     process.exit()
 }
