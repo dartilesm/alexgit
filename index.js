@@ -58,8 +58,11 @@ if (!isSuggestedCommitAccepted) {
     }
     try {
         const { customCommit } = await yargsInteractive().usage("$0 <command> [args]").interactive(customCommitOptions)
-        applyCommit(customCommit)
+        const { error } = applyCommit(customCommit)
+        if (!error) console.log(chalk.green("All done! ✅"))
     } catch (error) {
         console.log(error)
+    } finally {
+        process.exit()
     }
 }
