@@ -61,7 +61,7 @@ if (!isSuggestedCommitAccepted) {
         interactive: { default: true },
         customCommit: {
             type: "input",
-            describe: "Ok, no problem! Feel free to adjust it to your liking 🔧:",
+            describe: "Ok, no problem! Feel free to adjust it to your liking (and press enter to commit) 🔧:",
             default: suggestedCommit,
             prompt: "always"
         }
