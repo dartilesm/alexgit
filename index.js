@@ -44,8 +44,8 @@ const suggestionOptions = {
 const { isSuggestedCommitAccepted } = await yargsInteractive().usage("$0 <command> [args]").interactive(suggestionOptions)
 
 
-if (isSuggestedCommitAccepted) {
-    const { error, data } = applyCommit(suggestedCommit)
+function makeCommit(commit) {
+    const { error, data } = applyCommit(commit)
     if (!error) console.log(`
         ${chalk.green("All done! ✅")}
         
@@ -53,6 +53,8 @@ if (isSuggestedCommitAccepted) {
     `)
     process.exit()
 }
+
+if (isSuggestedCommitAccepted) makeCommit(suggestedCommit)
 
 if (!isSuggestedCommitAccepted) {
     const customCommitOptions = {
@@ -66,12 +68,7 @@ if (!isSuggestedCommitAccepted) {
     }
     try {
         const { customCommit } = await yargsInteractive().usage("$0 <command> [args]").interactive(customCommitOptions)
-        const { error, data } = applyCommit(customCommit)
-        if (!error) console.log(`
-            ${chalk.green("All done! ✅")}
-            
-            ${data}
-        `)
+        makeCommit(customCommit)
     } catch (error) {
         console.log(error)
     } finally {
