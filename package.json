@@ -10,6 +10,7 @@
   "dependencies": {
     "chalk": "^5.2.0",
     "cohere-ai": "^5.0.2",
+    "enquirer": "^2.3.6",
     "ora": "^6.1.2",
     "prompts": "^2.4.2",
     "yargs-interactive": "^3.0.1"
