@@ -1,21 +1,22 @@
 import ora from "ora";
+import chalk from "chalk";
 
 const spinner = ora({
-    text: "Wonderful, I got your commit message!",
+    text: `${chalk.bgCyanBright(chalk.black(" info  "))} Wonderful, I got your commit message!`,
     stream: process.stdout
 });
 
 const phrases = [
-    "Taking ideas from your commit message 🧠 ",
-    "Making similar commits 🧙‍♂️ ",
-    "Adding some magic to them ✨ ",
-    "Final tweaks ⚒️ ",
-    "Almost there! 🤖 ",
+    `${chalk.bgCyanBright(chalk.black(" info  "))} Taking ideas from your commit message 🧠 `,
+    `${chalk.bgCyanBright(chalk.black(" info  "))} Making similar commits 🧙‍♂️ `,
+    `${chalk.bgCyanBright(chalk.black(" info  "))} Adding some magic to them ✨ `,
+    `${chalk.bgCyanBright(chalk.black(" info  "))} Final tweaks ⚒️ `,
+    `${chalk.bgCyanBright(chalk.black(" info  "))} Almost there! 🤖 `,
 ];
 
 const waitingPhrases = [
-    "Things happened unexpectedly 🐛, but I'm on it 🩴",
-    "I'm still here, just waiting for the magic to happen 🧙‍♂️",
+    `${chalk.bgCyanBright(chalk.black(" info  "))} Things happened unexpectedly 🐛, but I'm on it 🩴`,
+    `${chalk.bgCyanBright(chalk.black(" info  "))} I'm still here, just waiting for the magic to happen 🧙‍♂️`,
 ]
 
 
@@ -45,6 +46,7 @@ async function renderAllPhrases() {
 
 
 function startSpinner() {
+    console.log("") // Add empty line
     spinner.start()
 
     renderAllPhrases()

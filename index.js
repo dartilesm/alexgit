@@ -4,6 +4,14 @@ import makeCommit from "./src/make-commit.js";
 import getImprovedCommits from "./src/generate-commit.js";
 import renderPrompt from "./src/propmts.js";
 import startSpinner from "./src/spinner.js";
+import Alexgit from "./src/alexgit.js";
+import messages from "./src/messages.mock.js";
+import sleep from "./src/utils/sleep.js";
+
+const alexgit = new Alexgit();
+
+await alexgit.say(messages.welcome)
+await sleep(1000)
 
 const initialCommit = await renderPrompt("initialCommit");
 
@@ -15,12 +23,12 @@ try {
 } catch (error) {}
 
 if (!suggestedCommits || suggestedCommits?.length === 0) {
-    spinner.fail(chalk.red("Something went wrong! Please try again later 😔"))
+    spinner.fail(`${chalk.bgRedBright(chalk.black(" error "))} ${messages.error[0]}`)
     process.exit()
 }
 
 spinner.text = "Oh! I got it!";
-await new Promise(resolve => setTimeout(resolve, 1000));
+await sleep(1000)
 spinner.stop()
 
 const commitSelected = await renderPrompt("commitList", { choices: suggestedCommits })

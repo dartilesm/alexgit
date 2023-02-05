@@ -1,77 +1,80 @@
 #!/usr/bin/env node
 import { createLogUpdate } from "log-update"
 import chalk from "chalk"
+class Alexgit {
+    mouthExpressions = [` ${chalk.blueBright("◡")} `, ` ${chalk.blueBright("○")} `, ` ${chalk.blueBright("▬")} `, ` ${chalk.blueBright("●")} `]
+    eyesExpressions = ["0", "U"]
+    moodExpression = {
+        happy: `^ ${chalk.blueBright("▽")} ^`,
+    }
 
-const log = createLogUpdate(process.stdout, { showCursor: false })
+    interval = null
 
-const mouthExpressions = [" ◡ ", " ○ ", " ▬ ", " ● "]
-const eyesExpressions = ["0", "U"]
-const moodExpression = {
-    happy: "^ ▽ ^",
-}
+    eye = this.eyesExpressions[0];
+    mouth = this.mouthExpressions[0];
 
-let [eye] = eyesExpressions;
-let [mouth] = mouthExpressions;
+    constructor() {
+        this.log = createLogUpdate(process.stdout, { showCursor: false })
+    }
 
-log(`
- ╭──⌂──╮ 
- │${eye}${chalk.green(mouth)}${eye}|
- ╰─────╯
-`)
-
-function setTalkAnimation(message, mood) {
-    let [eye] = eyesExpressions;
-    let mouth;
-
-    mouth = mouthExpressions[Math.floor(Math.random() * mouthExpressions.length)]
+    say(messages) {
     
-    const faceExpression = mood ? moodExpression[mood] : `${eye}${chalk.green(mouth)}${eye}`
+        let messagesClone, words, message, wordIndex;
+    
+        function setNewMessages(currentMessages = messages) {
+            messagesClone = [...currentMessages]
+            words = messagesClone.shift()?.split(" ");
+            message = "";
+            wordIndex = 0;
+        }
+    
+        setNewMessages()
+        
+        return new Promise((resolve, reject) => {
+            
+            const updateMessage = () => {
+                const word = words[wordIndex]
+                message = `${message} ${word}`
+                this.setTalkAnimation(message, wordIndex === words.length - 1 ? "happy" : undefined)
+                wordIndex++;
+    
+                if (wordIndex === words.length) {
+                    clearInterval(this.interval)
+                    if (messagesClone.length > 0) setTimeout(() => {
+                        setNewMessages(messagesClone)
+                        this.interval = setInterval(updateMessage, 250)
+                    }, 1000)
+                    if (messagesClone.length === 0) {
+                        resolve()
+                    } 
+                }
+            }
+    
+            this.interval = setInterval(updateMessage, 250)
+        })
+        
+    }
 
-log(`
+    setTalkAnimation(message, mood) {
+        let [eye] = this.eyesExpressions;
+        let mouth;
+    
+        mouth = this.mouthExpressions[Math.floor(Math.random() * this.mouthExpressions.length)]
+        
+        const faceExpression = mood ? this.moodExpression[mood] : `${eye}${chalk.green(mouth)}${eye}`
+    
+this.log(`
  ╭──⌂──╮ 
  │${faceExpression}│ ${chalk.yellow(message)}
  ╰─────╯
 `)
-
-}
-
-function alexgitSay(messages) {
-    let interval = null;
-
-    let messagesClone, words, message, wordIndex;
-
-    function setNewMessages(currentMessages = messages) {
-        messagesClone = [...currentMessages]
-        words = messagesClone.shift()?.split(" ");
-        message = "";
-        wordIndex = 0;
+    
     }
 
-    setNewMessages()
-    
-    return new Promise((resolve, reject) => {
-        
-        const updateMessage = () => {
-            const word = words[wordIndex]
-            message = `${message} ${word}`
-            setTalkAnimation(message, wordIndex === words.length - 1 ? "happy" : undefined)
-            wordIndex++;
-
-            if (wordIndex === words.length) {
-                clearInterval(interval)
-                if (messagesClone.length > 0) setTimeout(() => {
-                    setNewMessages(messagesClone)
-                    interval = setInterval(updateMessage, 250)
-                }, 1000)
-                if (messagesClone.length === 0) {
-                    resolve()
-                } 
-            }
-        }
-
-        interval = setInterval(updateMessage, 250)
-    })
-    
+    clear() {
+        clearInterval(this.interval)
+        this.log.clear();
+    }
 }
 
-export default alexgitSay;
+export default Alexgit;

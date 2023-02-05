@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 
 import enquirer from "enquirer";
+import chalk from "chalk";
 
 const promptData = {
         initialCommit: {
             promptType: "input",
             options: {
                 name: "initialCommit",
-                message: "Enter a commit message...",
+                message: `${chalk.bgGreenBright(chalk.black(" input "))} Enter a commit message: `,
                 result(answer) {
-                    this.clear()
                     return answer
                 }
             }
@@ -18,7 +18,7 @@ const promptData = {
             promptType: "select",
             options: {
                 name: "commitList",
-                message: "Select one of the following options to edit and/or confirm:",
+                message: `${chalk.bgGreenBright(chalk.black(" select"))} Confirm and/or edit the commit: `,
                 result(answer) {
                     this.clear()
                     return answer
@@ -29,7 +29,7 @@ const promptData = {
             promptType: "input",
             options: {
                 name: "confirmCommit",
-                message: "Edit and/or confirm the commit: ",
+                message: `${chalk.bgGreenBright(chalk.black(" input "))} Confirm and/or edit the commit: `,
             }
         }
     }
