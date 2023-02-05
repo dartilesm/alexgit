@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import chalk from "chalk";
-import makeCommit from "./lib/make-commit.js";
-import getImprovedCommits from "./lib/generate-commit.js";
-import renderPrompt from "./lib/propmts.js";
-import startSpinner from "./lib/spinner.js";
+import makeCommit from "./src/make-commit.js";
+import getImprovedCommits from "./src/generate-commit.js";
+import renderPrompt from "./src/propmts.js";
+import startSpinner from "./src/spinner.js";
 
 const initialCommit = await renderPrompt("initialCommit");
 
