@@ -1,7 +1,5 @@
 import chalk from "chalk"
-import os from "os"
-
-const { username } = os.userInfo() || { username: "dear" }
+import username from "./utils/username.js";
 
 
 function messageType({ type, text } = { }) {
@@ -39,7 +37,7 @@ const messages = {
         chalk.white("I'm still here, just waiting for the magic to happen 🧙‍♂️"),
     ],
     error: [
-        chalk.white(`Sorry diego, something in my circuits has ${chalk.red("gone wrong.")} Please try again later 😔`)
+        chalk.white(`Sorry ${chalk.blueBright(username)}, something in my circuits has ${chalk.red("gone wrong.")} Please try again later 😔`)
     ]
 }
 
