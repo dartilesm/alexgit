@@ -3,6 +3,24 @@ import os from "os"
 
 const { username } = os.userInfo() || { username: "dear" }
 
+
+function messageType({ type, text } = { }) {
+    const messageTypes = {
+        "error": chalk.bgRed(chalk.black(text ? ` ${text} ` : " error ")),
+        "success": chalk.bgGreen(chalk.black(text ? ` ${text} ` : " done ")),
+        "info": chalk.bgBlue(chalk.black(text ? ` ${text} ` : " info ")),
+        "warning": chalk.bgYellow(chalk.black(text ? ` ${text} ` : " warning ")),
+        "custom": chalk.bgMagenta(chalk.black(text ? ` ${text} ` : " custom ")),
+    }
+
+    return messageTypes[type];
+}
+
+export function categorizeMessage({ type, message, textType = "" }) {
+    return `${messageType({ type, text: textType }).padEnd(28, " ")} ${message}`
+}
+
+
 const messages = {
     welcome: [
         chalk.white(`Hi ${chalk.blueBright(username)}!`),
