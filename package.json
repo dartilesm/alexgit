@@ -1,7 +1,7 @@
 {
-  "name": "magic-commit",
+  "name": "alexgit",
   "version": "0.0.1",
-  "description": "",
+  "description": "Alexgit is a virtual assistant that will help you writing amazing and beautiful commits.",
   "type": "module",
   "main": "index.js",
   "scripts": {
@@ -11,11 +11,12 @@
     "chalk": "^5.2.0",
     "cohere-ai": "^5.0.2",
     "enquirer": "^2.3.6",
+    "log-update": "^5.0.1",
     "ora": "^6.1.2",
     "prompts": "^2.4.2",
     "yargs-interactive": "^3.0.1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["git", "commit", "assistant", "virtual", "cohere", "cohere-ai"],
+  "author": "Diego Artiles",
   "license": "ISC"
 }
