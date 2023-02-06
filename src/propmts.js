@@ -1,15 +1,16 @@
 #!/usr/bin/env node
 
 import enquirer from "enquirer";
+import { categorizeMessage } from "./messages.mock.js";
 
 const promptData = {
         initialCommit: {
             promptType: "input",
             options: {
                 name: "initialCommit",
-                message: "Enter a commit message...",
+                message: categorizeMessage({ type: "success", message: "Enter a commit message: ", textType: "input" }),
                 result(answer) {
-                    this.clear()
+                    this.message(categorizeMessage({ type: "success", message: "Enter a commit message: ", textType: "done" }))
                     return answer
                 }
             }
@@ -18,7 +19,7 @@ const promptData = {
             promptType: "select",
             options: {
                 name: "commitList",
-                message: "Select one of the following options to edit and/or confirm:",
+                message: categorizeMessage({ type: "success", message: "Confirm and/or edit the commit: ", textType: "select" }),
                 result(answer) {
                     this.clear()
                     return answer
@@ -29,7 +30,7 @@ const promptData = {
             promptType: "input",
             options: {
                 name: "confirmCommit",
-                message: "Edit and/or confirm the commit: ",
+                message: categorizeMessage({ type: "success", message: "Confirm and/or edit the commit: ", textType: "input" }),
             }
         }
     }

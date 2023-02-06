@@ -1,55 +1,56 @@
 import ora from "ora";
+import { categorizeMessage } from "./messages.mock.js";
 
 const spinner = ora({
-    text: "Wonderful, I got your commit message!",
-    stream: process.stdout
+  stream: process.stdout,
 });
 
 const phrases = [
-    "Taking ideas from your commit message 🧠 ",
-    "Making similar commits 🧙‍♂️ ",
-    "Adding some magic to them ✨ ",
-    "Final tweaks ⚒️ ",
-    "Almost there! 🤖 ",
+  categorizeMessage({ type: "info", message: "Taking ideas from your commit message 🧠 " }),
+  categorizeMessage({ type: "info", message: "Making similar commits 🧙‍♂️ " }),
+  categorizeMessage({ type: "info", message: "Adding some magic to them ✨ " }),
+  categorizeMessage({ type: "info", message: "Final tweaks ⚒️ " }),
+  categorizeMessage({ type: "info", message: "Almost there! 🤖 " }),
 ];
 
 const waitingPhrases = [
-    "Things happened unexpectedly 🐛, but I'm on it 🩴",
-    "I'm still here, just waiting for the magic to happen 🧙‍♂️",
-]
-
+  categorizeMessage({ type: "info", message: "Things happened unexpectedly 🐛, but I'm on it 🩴" }),
+  categorizeMessage({
+    type: "info",
+    message: "I'm still here, just waiting for the magic to happen 🧙‍♂️",
+  }),
+];
 
 function renderPhrases(arrayOfPhrases, duration) {
-    let i = 0;
-    
-    const phrasesPromise = new Promise((resolve, reject) => {
-        let interval = setInterval(() => {
-            spinner.text = arrayOfPhrases[i];
-            i++;
-    
-            if (i === arrayOfPhrases.length) {
-                clearInterval(interval);
-                resolve()
-            }   
-        }, duration);
-    })
-    
+  let i = 0;
 
-    return phrasesPromise;
+  const phrasesPromise = new Promise((resolve, reject) => {
+    let interval = setInterval(() => {
+      spinner.text = arrayOfPhrases[i];
+      i++;
+
+      if (i === arrayOfPhrases.length) {
+        clearInterval(interval);
+        resolve();
+      }
+    }, duration);
+  });
+
+  return phrasesPromise;
 }
 
 async function renderAllPhrases() {
-    await renderPhrases(phrases, 2000)
-    await renderPhrases(waitingPhrases, 5000)
+  await renderPhrases(phrases, 2000);
+  await renderPhrases(waitingPhrases, 5000);
 }
 
+function startSpinner(message) {
+  if (message) spinner.text = message;
+  spinner.start();
 
-function startSpinner() {
-    spinner.start()
+  renderAllPhrases();
 
-    renderAllPhrases()
-
-    return spinner;
+  return spinner;
 }
 
 export default startSpinner;

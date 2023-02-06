@@ -1,5 +1,7 @@
 import chalk from "chalk";
 import { execSync } from "child_process";
+import { categorizeMessage } from "./messages.mock.js";
+import username from "./utils/username.js";
 
 function applyCommit(commit) {
     const response = {}
@@ -13,9 +15,6 @@ function applyCommit(commit) {
         }
     } catch (error) {
         response.error = error
-        console.log(`
-${chalk.red("It looks like you have no staged files!")} Please stage your files before committing them 👾
-        `)
     } finally {
         return response
     }
@@ -23,11 +22,12 @@ ${chalk.red("It looks like you have no staged files!")} Please stage your files 
 
 function makeCommit(commit) {
     const { error, data } = applyCommit(commit)
-    if (!error) console.log(`
-${chalk.green("All done! ✅")} ${data.fileModified}
 
-${data.commitData}
-    `)
+    const message = !error ? `✔ ${categorizeMessage({ type: "success", message: "2 files changed, 11 insertions(+)" })}
+    
+        ${data.commitData}` : `✖ ${categorizeMessage({ type: "error", message: `${chalk.blueBright(username)}, it looks like ${chalk.red("you have no staged files")}! Please stage your files before committing them 👾` })}`
+
+    console.log(message)
     process.exit()
 }
 
