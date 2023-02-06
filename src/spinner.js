@@ -1,9 +1,7 @@
 import ora from "ora";
 import { categorizeMessage } from "./messages.mock.js";
-import renderVerticalLine from "./utils/vertical-seperator.js";
 
 const spinner = ora({
-  text: categorizeMessage({ type: "info", message: "Wonderful, I got your commit message!" }),
   stream: process.stdout,
 });
 
@@ -46,8 +44,8 @@ async function renderAllPhrases() {
   await renderPhrases(waitingPhrases, 5000);
 }
 
-function startSpinner() {
-  renderVerticalLine();
+function startSpinner(message) {
+  if (message) spinner.text = message;
   spinner.start();
 
   renderAllPhrases();
