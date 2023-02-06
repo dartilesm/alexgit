@@ -3,18 +3,19 @@
   "version": "0.0.1-alpha.0",
   "description": "Alexgit is a virtual assistant that will help you writing amazing and beautiful commits.",
   "type": "module",
-  "main": "index.js",
+  "main": "bin/index.js",
+  "bin": "bin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
+  "devDependencies": {
     "chalk": "^5.2.0",
     "cohere-ai": "^5.0.2",
     "enquirer": "^2.3.6",
     "log-update": "^5.0.1",
     "ora": "^6.1.2",
     "prompts": "^2.4.2",
-    "yargs-interactive": "^3.0.1"
+    "yargs": "^17.6.2"
   },
   "keywords": [
     "git",
