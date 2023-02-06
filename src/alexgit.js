@@ -65,7 +65,7 @@ class Alexgit {
     
 this.log(`
  ╭──⌂──╮ 
- │${faceExpression}│ ${chalk.yellow(message)}
+ │${faceExpression}│  ${chalk.yellow(message)}
  ╰─────╯
 `)
     

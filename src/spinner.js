@@ -1,57 +1,58 @@
 import ora from "ora";
-import chalk from "chalk";
+import { categorizeMessage } from "./messages.mock.js";
+import renderVerticalLine from "./utils/vertical-seperator.js";
 
 const spinner = ora({
-    text: `${chalk.bgCyanBright(chalk.black(" info  "))} Wonderful, I got your commit message!`,
-    stream: process.stdout
+  text: categorizeMessage({ type: "info", message: "Wonderful, I got your commit message!" }),
+  stream: process.stdout,
 });
 
 const phrases = [
-    `${chalk.bgCyanBright(chalk.black(" info  "))} Taking ideas from your commit message 🧠 `,
-    `${chalk.bgCyanBright(chalk.black(" info  "))} Making similar commits 🧙‍♂️ `,
-    `${chalk.bgCyanBright(chalk.black(" info  "))} Adding some magic to them ✨ `,
-    `${chalk.bgCyanBright(chalk.black(" info  "))} Final tweaks ⚒️ `,
-    `${chalk.bgCyanBright(chalk.black(" info  "))} Almost there! 🤖 `,
+  categorizeMessage({ type: "info", message: "Taking ideas from your commit message 🧠 " }),
+  categorizeMessage({ type: "info", message: "Making similar commits 🧙‍♂️ " }),
+  categorizeMessage({ type: "info", message: "Adding some magic to them ✨ " }),
+  categorizeMessage({ type: "info", message: "Final tweaks ⚒️ " }),
+  categorizeMessage({ type: "info", message: "Almost there! 🤖 " }),
 ];
 
 const waitingPhrases = [
-    `${chalk.bgCyanBright(chalk.black(" info  "))} Things happened unexpectedly 🐛, but I'm on it 🩴`,
-    `${chalk.bgCyanBright(chalk.black(" info  "))} I'm still here, just waiting for the magic to happen 🧙‍♂️`,
-]
-
+  categorizeMessage({ type: "info", message: "Things happened unexpectedly 🐛, but I'm on it 🩴" }),
+  categorizeMessage({
+    type: "info",
+    message: "I'm still here, just waiting for the magic to happen 🧙‍♂️",
+  }),
+];
 
 function renderPhrases(arrayOfPhrases, duration) {
-    let i = 0;
-    
-    const phrasesPromise = new Promise((resolve, reject) => {
-        let interval = setInterval(() => {
-            spinner.text = arrayOfPhrases[i];
-            i++;
-    
-            if (i === arrayOfPhrases.length) {
-                clearInterval(interval);
-                resolve()
-            }   
-        }, duration);
-    })
-    
+  let i = 0;
 
-    return phrasesPromise;
+  const phrasesPromise = new Promise((resolve, reject) => {
+    let interval = setInterval(() => {
+      spinner.text = arrayOfPhrases[i];
+      i++;
+
+      if (i === arrayOfPhrases.length) {
+        clearInterval(interval);
+        resolve();
+      }
+    }, duration);
+  });
+
+  return phrasesPromise;
 }
 
 async function renderAllPhrases() {
-    await renderPhrases(phrases, 2000)
-    await renderPhrases(waitingPhrases, 5000)
+  await renderPhrases(phrases, 2000);
+  await renderPhrases(waitingPhrases, 5000);
 }
 
-
 function startSpinner() {
-    console.log("") // Add empty line
-    spinner.start()
+  renderVerticalLine();
+  spinner.start();
 
-    renderAllPhrases()
+  renderAllPhrases();
 
-    return spinner;
+  return spinner;
 }
 
 export default startSpinner;

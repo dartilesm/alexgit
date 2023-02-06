@@ -5,8 +5,9 @@ import getImprovedCommits from "./src/generate-commit.js";
 import renderPrompt from "./src/propmts.js";
 import startSpinner from "./src/spinner.js";
 import Alexgit from "./src/alexgit.js";
-import messages from "./src/messages.mock.js";
+import messages, { categorizeMessage } from "./src/messages.mock.js";
 import sleep from "./src/utils/sleep.js";
+import renderVerticalLine from "./src/utils/vertical-seperator.js";
 
 const alexgit = new Alexgit();
 
@@ -23,11 +24,12 @@ try {
 } catch (error) {}
 
 if (!suggestedCommits || suggestedCommits?.length === 0) {
-    spinner.fail(`${chalk.bgRedBright(chalk.black(" error "))} ${messages.error[0]}`)
+    spinner.stop()
+    console.log(`✖ ${categorizeMessage({ type: "error", message: messages.error[0] })}`)
     process.exit()
 }
 
-spinner.text = "Oh! I got it!";
+spinner.text = categorizeMessage({ type: "success", message: "Oh! I got it!" });
 await sleep(1000)
 spinner.stop()
 
@@ -35,4 +37,6 @@ const commitSelected = await renderPrompt("commitList", { choices: suggestedComm
 
 const commitConfirmed = await renderPrompt("confirmCommit", { initial: commitSelected })
 
+
+renderVerticalLine()
 if (commitConfirmed) makeCommit(commitConfirmed)
