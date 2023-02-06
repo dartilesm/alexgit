@@ -8,13 +8,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
+  "dependencies": {
     "chalk": "^5.2.0",
     "cohere-ai": "^5.0.2",
     "enquirer": "^2.3.6",
     "log-update": "^5.0.1",
     "ora": "^6.1.2",
-    "prompts": "^2.4.2",
     "yargs": "^17.6.2"
   },
   "keywords": [
