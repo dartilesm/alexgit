@@ -20,6 +20,9 @@ export function categorizeMessage({ type, message, textType = "" }) {
 
 
 const messages = {
+    initialCommit: [
+      chalk.white("Wonderful, I got your commit message!")  
+    ],
     welcome: [
         chalk.white(`Hi ${chalk.blueBright(username)}!`),
         chalk.white(`I am ${chalk.blueBright("Alexgit")} your personal assistant`),
