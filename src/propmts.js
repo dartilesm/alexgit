@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 import enquirer from "enquirer";
 import { categorizeMessage } from "./messages.mock.js";
 

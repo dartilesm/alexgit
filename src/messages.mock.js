@@ -25,7 +25,7 @@ const messages = {
     ],
     welcome: [
         chalk.white(`Hi ${chalk.blueBright(username)}!`),
-        chalk.white(`I am ${chalk.blueBright("Alexgit")} your personal assistant`),
+        chalk.white(`I am ${chalk.blueBright("AlexGit")} your personal assistant`),
         chalk.white(`Let's get started creating ${chalk.blueBright("beautiful commits!")}`)
     ],
     improvingCommit: [
