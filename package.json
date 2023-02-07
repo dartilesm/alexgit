@@ -24,6 +24,17 @@
     "cohere",
     "cohere-ai"
   ],
-  "author": "Diego Artiles",
+  "publishConfig": {
+    "@dartilesm:registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dartilesm/alexgit"
+  },
+  "author": {
+    "name": "Diego Artiles",
+    "email": "diego@dartiles.dev",
+    "url": "https://dartiles.link"
+  },
   "license": "ISC"
 }
