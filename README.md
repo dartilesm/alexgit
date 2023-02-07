@@ -1,22 +1,47 @@
-# Alexgit - A Virtual Assistant for Commits
 
-Alexgit is an AI virtual assistant that helps people create beautiful, amazing commits following the conventional commit standard. This tool is designed for developers and Git users who want to make their commits more meaningful and readable.
+![AlexGit](https://user-images.githubusercontent.com/21966352/217099484-dcec7ffc-9b92-4c14-be6a-38b1ca550764.svg)
 
-## How does it work?
+# AlexGit - A Virtual Git Assistant
 
-Alexgit works by improving the conventional commit messages given a previous commit. It analyzes the previous commit message and suggests improvements based on the conventional commit format. You can then choose to use the suggested message or modify it as per your requirement.
+Alexgit is an experimental AI virtual assistant designed to help with the day-to-day tasks of Git version control system. 
 
-## Benefits of using Alexgit
+Currently, it is in alpha version and its main focus is to **create and improve commits** provided by the user to follow the conventional commit format.  
 
-- Helps maintain a clean Git history by following the conventional commit standard
-- Improves the readability of commit messages by providing consistent and descriptive messages
-- Saves time and effort by suggesting improved commit messages based on previous commits
-- Increases the visibility of code changes by providing clear and concise commit messages
+## How does AlexGit work?
 
-## How to get started with Alexgit?
+AlexGit works by analyzing the commit message provided by the user and suggesting improvements to follow the conventional commit format. You can then choose to accept the suggested changes or make modifications as needed.
 
-To start using Alexgit, you need to install the tool and integrate it with your Git repository. The installation process is straightforward and can be completed within a few minutes. Once installed, Alexgit will start suggesting improved commit messages every time you make a new commit.
+## Benefits of using AlexGit
+
+- Write consistent and descriptive confirmation messages to improve the readability of your history.
+- Save time thinking about what kind of commit you are doing *(`feat`, `fix`, `chore`, `test`, `ci`...)*.
+
+## Getting started with AlexGit
+
+### Installation
+
+```console
+npm i alexgit -g
+```
+### Usage
+Just type the following command and AlexGit will guide you through the process.
+
+```console
+alexgit
+```
+
+![AlexGit)](https://user-images.githubusercontent.com/21966352/217141708-71aa5a39-716a-4d20-a37d-2deaacd0ded7.gif)
+
+#### Commands
+|Command| Type | Description|
+|--|--|--|
+| `commit` | string | Set the initial commit to skip first prompt|
+
+
+## What's next for AlexGit?
+
 
 ## Conclusion
 
-Alexgit is a must-have tool for developers and Git users who want to improve the quality of their commits and make their Git history more meaningful and readable. With its easy installation and use, you can start using Alexgit today and make your Git history more beautiful and amazing.
+AlexGit is a valuable tool for developers and Git users looking to improve the quality of their commits and make their Git history more meaningful and readable. With its ease of installation and use, you can start using AlexGit today and take your Git history to the next level.
+
