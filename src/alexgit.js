@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import { createLogUpdate } from "log-update"
 import chalk from "chalk"
 class Alexgit {
@@ -65,7 +64,7 @@ class Alexgit {
     
 this.log(`
  ╭──⌂──╮ 
- │${faceExpression}│  ${chalk.yellow(message)}
+[│${faceExpression}│]  ${chalk.yellow(message)}
  ╰─────╯
 `)
     

@@ -18,9 +18,10 @@ await sleep(250)
 
 const initialCommit = await renderPrompt("initialCommit", { initial: commitArg || "", skip: !!commitArg});
 
-if (!commitArg) {
+if (commitArg) {
     await alexgit.say(messages.initialCommit)
-};
+};  
+renderVerticalLine()
 const spinner = startSpinner(categorizeMessage({ type: "info", message: !commitArg ? "Wonderful, I got your commit message!" : "Working on it!"}))
 
 let suggestedCommits
