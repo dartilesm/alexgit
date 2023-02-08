@@ -36,5 +36,8 @@
     "email": "diego@dartiles.dev",
     "url": "https://dartiles.link"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^16.0.3"
+  }
 }
