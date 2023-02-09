@@ -32,12 +32,22 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Set local variables
+        env:
+            COHERE_API_KEY: ${{ secrets.COHERE_API_KEY }}
+        run: |
+          echo COHERE_API_KEY=$COHERE_API_KEY > .env
         
+      - name: Show environment
+        run: |
+          echo $COHERE_API_KEY
+          cat .env
+          
       - name: Build
         run: pnpm run build
         env:
-          COHERE_API_KEY: ${{ secrets.COHERE_API_KEY }}
-          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         
       - name: Test
         run: pnpm run test
