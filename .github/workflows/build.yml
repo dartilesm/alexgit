@@ -7,7 +7,10 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-
+  
+env:
+  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  COHERE_API_KEY: ${{ secrets.COHERE_API_KEY }}
 jobs:
   cache-install-and-build:
     name: Build Package
@@ -34,10 +37,8 @@ jobs:
         run: pnpm install
 
       - name: Set local variables
-        env:
-            COHERE_API_KEY: ${{ secrets.COHERE_API_KEY }}
         run: |
-          echo COHERE_API_KEY=$COHERE_API_KEY > .env
+          echo COHERE_API_KEY=$COHERE_API_KEY >> .env
         
       - name: Show environment
         run: |
@@ -46,8 +47,6 @@ jobs:
           
       - name: Build
         run: pnpm run build
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         
       - name: Test
         run: pnpm run test
