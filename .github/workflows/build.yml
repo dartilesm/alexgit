@@ -39,11 +39,6 @@ jobs:
       - name: Set local variables
         run: |
           echo COHERE_API_KEY=$COHERE_API_KEY >> .env
-        
-      - name: Show environment
-        run: |
-          echo $COHERE_API_KEY
-          cat .env
           
       - name: Build
         run: pnpm run build
