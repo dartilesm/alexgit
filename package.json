@@ -39,7 +39,6 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "dotenv": "^16.0.3",
-    "vite": "^4.1.1"
+    "dotenv": "^16.0.3"
   }
 }
