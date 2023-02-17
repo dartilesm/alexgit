@@ -6,6 +6,7 @@
   "main": "bin/index.js",
   "bin": "bin/index.js",
   "scripts": {
+    "build": "echo \"Info: no build specified\" && exit 0",
     "test": "echo \"Info: no test specified\" && exit 0"
   },
   "dependencies": {
@@ -36,5 +37,8 @@
     "email": "diego@dartiles.dev",
     "url": "https://dartiles.link"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^16.0.3"
+  }
 }

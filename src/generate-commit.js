@@ -1,10 +1,12 @@
 import cohere from "cohere-ai";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 function filterMatchedCommitFormats(commit) {
     return commit.match(/^(feat|fix|docs|style|refactor|perf|test|chore|revert|build|ci|release)(\([a-z]+\))?:\s[a-z]/i)
 }
 
-cohere.init("n7xBASe9XW1nlkP6EcXSh6TNXlq6uD2yZfXTT0La");
+cohere.init(process.env.COHERE_API_KEY);
 
 async function getImprovedCommits(commit) {
     const response = await cohere.generate({
