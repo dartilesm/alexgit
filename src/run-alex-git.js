@@ -24,12 +24,8 @@ async function runAlexGit() {
     renderVerticalLine()
     const spinner = startSpinner(categorizeMessage({ type: "info", message: !commitArg ? "Wonderful, I got your commit message!" : "Working on it!"}))
     
-    let suggestedCommits
-    try {
-        suggestedCommits = await getImprovedCommits(initialCommit)
-    } catch (error) {}
-    
-    if (!suggestedCommits || suggestedCommits?.length === 0) {
+    const suggestedCommit = await getImprovedCommits(initialCommit);
+    if (suggestedCommit.error || suggestedCommit.data.length === 0) {
         spinner.stop()
         console.log(`✖ ${categorizeMessage({ type: "error", message: messages.error[0] })}`)
         process.exit()
@@ -39,7 +35,7 @@ async function runAlexGit() {
     await sleep(1000)
     spinner.stop()
     
-    const commitSelected = await renderPrompt("commitList", { choices: suggestedCommits })
+    const commitSelected = await renderPrompt("commitList", { choices: suggestedCommit.data })
     
     const commitConfirmed = await renderPrompt("confirmCommit", { initial: commitSelected })
     
