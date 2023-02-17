@@ -20,6 +20,11 @@ export function categorizeMessage({ type, message, textType = "" }) {
 
 
 const messages = {
+    apiKeyNotFound: [
+        chalk.white(`Hi ${chalk.blueBright(username)}!`),
+        chalk.white(`I am ${chalk.blueBright("AlexGit")} your personal assistant`),
+        chalk.white(`To begin I will need the COHERE_API_KEY to make me work. 🗝️`),
+    ],
     initialCommit: [
       chalk.white("Wonderful, I got your commit message!")  
     ],
