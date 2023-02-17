@@ -2,6 +2,17 @@ import enquirer from "enquirer";
 import { categorizeMessage } from "./messages.mock.js";
 
 const promptData = {
+        askForAPIKey: {
+            promptType: "password",
+            options: {
+                name: "askForAPIKey",
+                message: categorizeMessage({ type: "info", message: "Please enter the API key: ", textType: "secret" }),
+                result(answer) {
+                    this.message(categorizeMessage({ type: "success", message: "Please enter the API key: ", textType: "done" }))
+                    return answer   
+                }
+            }
+        },
         initialCommit: {
             promptType: "input",
             options: {
