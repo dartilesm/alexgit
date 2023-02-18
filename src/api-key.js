@@ -12,7 +12,7 @@ function getFormatedEnvVars(envVar) {
   return { [name]: value };
 }
 
-async function getAPIKey() {
+function getAPIKey() {
   const currentWorkingDirectory = process.cwd();
   // read a file from the current working directory
   const data = fs.readFileSync(`${currentWorkingDirectory}/.alexgit`, "utf8");
