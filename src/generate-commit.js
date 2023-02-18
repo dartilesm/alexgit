@@ -16,7 +16,7 @@ async function getImprovedCommits(commit) {
         cohereResponse = await cohere.generate({
             model: "xlarge",
             prompt: `
-            Given a text, this program generates a commit message that meets the "conventional commit" standard, corrects the spelling and then transform its tense to the imperative present tense.
+            Write an insightful but concise Git commit message in a complete sentence in the present tense and imperative, applying conventional commit rules..
             --
             Incorrect commit format: updated the changelog to beta.5
             Correct commit format: docs: update changelog to beta.5
