@@ -12,8 +12,7 @@ body:
     attributes:
       label: What happened?
       description: If you also could add an image or video, it would be helpful!
-      placeholder: Tell us what you see!
-      value: "A bug happened!"
+      placeholder: A bug happened!
     validations:
       required: true
   - type: textarea
