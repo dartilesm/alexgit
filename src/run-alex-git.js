@@ -39,10 +39,7 @@ async function runAlexGit() {
     skip: !!commitArg,
   });
 
-  if (commitArg) {
-    await alexgit.say(messages.initialCommit);
-  }
-  renderVerticalLine();
+  if(!commitArg) renderVerticalLine();
   const spinner = startSpinner(
     categorizeMessage({
       type: "info",
@@ -61,6 +58,7 @@ async function runAlexGit() {
   await sleep(1000);
   spinner.stop();
 
+  if(!commitArg) renderVerticalLine();
   const commitSelected = await renderPrompt("commitList", { choices: suggestedCommit.data });
 
   const commitConfirmed = await renderPrompt("confirmCommit", { initial: commitSelected });
