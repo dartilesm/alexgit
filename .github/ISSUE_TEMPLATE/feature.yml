@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         Hello dear user! Thanks for taking the time to help AlexGit to be better.
-  - type: input
+  - type: textarea
     id: bug-relate
     attributes:
       label: Is your proposal related to an existing bug or problem?
