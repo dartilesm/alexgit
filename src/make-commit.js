@@ -23,8 +23,8 @@ function applyCommit(commit) {
 function makeCommit(commit) {
     const { error, data } = applyCommit(commit)
 
-    const message = !error ? `✔ ${categorizeMessage({ type: "success", message: data.fileModified })}
-           ${data.commitData}` : `✖ ${categorizeMessage({ type: "error", message: `${chalk.blueBright(username)}, it looks like ${chalk.red("you have no staged files")}! Please stage your files before committing them 👾` })}`
+    const message = !error ? `✔ ${categorizeMessage({ type: "success", message: data.commitData })}
+           ${data.fileModified}` : `✖ ${categorizeMessage({ type: "error", message: `${chalk.blueBright(username)}, it looks like ${chalk.red("you have no staged files")}! Please stage your files before committing them 👾` })}`
 
     console.log(message)
     process.exit()
