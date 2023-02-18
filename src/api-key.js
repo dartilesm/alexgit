@@ -1,3 +1,4 @@
+import { execSync } from "child_process";
 import fs from "fs";
 import renderPrompt from "./propmts.js";
 
@@ -14,6 +15,9 @@ function getFormatedEnvVars(envVar) {
 
 function getAPIKey() {
   const currentWorkingDirectory = process.cwd();
+  // check if the file exists
+  if (!fs.existsSync(`${currentWorkingDirectory}/.alexgit`)) return null;
+
   // read a file from the current working directory
   const data = fs.readFileSync(`${currentWorkingDirectory}/.alexgit`, "utf8");
 
@@ -32,6 +36,8 @@ export async function askForApiKey(){
     const apiKey = await renderPrompt("askForAPIKey")
     const currentWorkingDirectory = process.cwd();
     fs.writeFileSync(`${currentWorkingDirectory}/.alexgit`, `COHERE_API_KEY=${apiKey}`, "utf8");
+    // add file to gitignore
+    execSync(`echo "\n.alexgit" >> .gitignore`)
 }
 
 export default getAPIKey;
