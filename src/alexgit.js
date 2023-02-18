@@ -1,5 +1,7 @@
 import { createLogUpdate } from "log-update"
 import chalk from "chalk"
+import getVersion from "./utils/version.js"
+
 class Alexgit {
     mouthExpressions = [` ${chalk.blueBright("◡")} `, ` ${chalk.blueBright("○")} `, ` ${chalk.blueBright("▬")} `, ` ${chalk.blueBright("●")} `]
     eyesExpressions = ["0", "U"]
@@ -13,7 +15,10 @@ class Alexgit {
     mouth = this.mouthExpressions[0];
 
     constructor() {
+        const version = getVersion();
+
         this.log = createLogUpdate(process.stdout, { showCursor: false })
+        this.version = version;
     }
 
     say(messages) {
@@ -61,9 +66,9 @@ class Alexgit {
         mouth = this.mouthExpressions[Math.floor(Math.random() * this.mouthExpressions.length)]
         
         const faceExpression = mood ? this.moodExpression[mood] : `${eye}${chalk.green(mouth)}${eye}`
-    
-this.log(`
- ╭──⌂──╮ 
+
+this.log(`             
+ ╭──⌂──╮    ${chalk.bgHex("#66189A")(chalk.white(` AlexGit `))} › ${chalk.bgGray(chalk.white(` v${this.version} `))}
 [│${faceExpression}│]  ${chalk.yellow(message)}
  ╰─────╯
 `)
