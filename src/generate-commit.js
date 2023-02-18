@@ -1,12 +1,13 @@
 import cohere from "cohere-ai";
 import * as dotenv from "dotenv";
+import getAPIKey from "./api-key.js";
 dotenv.config();
 
 function filterMatchedCommitFormats(commit) {
     return commit.match(/^(feat|fix|docs|style|refactor|perf|test|chore|revert|build|ci|release)(\([a-z]+\))?:\s[a-z]/i)
 }
-
-cohere.init(process.env.COHERE_API_KEY);
+const COHERE_API_KEY = getAPIKey();
+cohere.init(COHERE_API_KEY);
 
 async function getImprovedCommits(commit) {
     const response = {}
@@ -114,18 +115,25 @@ async function getImprovedCommits(commit) {
             truncate: "END",
             num_generations: 5,
         });
+
+        if (cohereResponse.statusCode !== 200) {
+            throw new Error(cohereResponse.body.message);
+        }
+
+        const suggestedCommits = cohereResponse?.body?.generations?.map((generation) => generation.text.trim())
+                .filter(filterMatchedCommitFormats)
+                .filter((value, index, self) => self.indexOf(value) === index);
+            
+                response.data = suggestedCommits
+
     } catch (error) {
-        response.error = error;
+        response.error = error.message;
     }
-
-    const suggestedCommits = cohereResponse.body.generations
-        .map((generation) => generation.text.trim())
-        .filter(filterMatchedCommitFormats)
-        .filter((value, index, self) => self.indexOf(value) === index);
-
-    response.data = suggestedCommits
 
     return response
 }
+
+
+
 
 export default getImprovedCommits
