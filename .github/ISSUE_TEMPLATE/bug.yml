@@ -1,60 +1,51 @@
-name: Bug Report
-description: File a bug report
-title: "[Bug]: "
-labels: ["bug",]
+name: 🐛 Bug Report
+description: Didn't AlexGit work as expected? Did you find an error? Please report it here!
+title: ":bug: Your title here"
+labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Hi dear contributor, I'm AlexGit. Thanks for taking the time to fill out this bug report!
-  - type: input
-    id: contact
-    attributes:
-      label: Contact Details
-      description: How can we get in touch with you if we need more info?
-      placeholder: ex. email@example.com
-    validations:
-      required: false
+        Hello dear user! Thanks for taking the time to help AlexGit to be better.
   - type: textarea
     id: what-happened
     attributes:
       label: What happened?
-      description: Also tell us, what did you expect to happen?
+      description: If you also could add an image or video, it would be helpful!
       placeholder: Tell us what you see!
       value: "A bug happened!"
+      render: markdown
     validations:
       required: true
-  - type: dropdown
-    id: version
-    attributes:
-      label: Version
-      description: What version of our software are you running?
-      options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
-    validations:
-      required: true
-  - type: dropdown
-    id: browsers
-    attributes:
-      label: What browsers are you seeing the problem on?
-      multiple: true
-      options:
-        - Firefox
-        - Chrome
-        - Safari
-        - Microsoft Edge
   - type: textarea
-    id: logs
+    id: steps
     attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-      render: shell
-  - type: checkboxes
-    id: terms
+      label: How to reproduce it?
+      description: "How do you trigger this bug? Please walk us through it step by step."
+      value: |
+        1.
+        2.
+        3.
+        ...
+      render: markdown
+  - type: input
+    id: alexgit-version
     attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
-      options:
-        - label: I agree to follow this project's Code of Conduct
-          required: true
+      label: AlexGit version
+      description: What version of AlexGit did you get the error in? You will find in when running `alexgit`.
+      placeholder: 0.0.1-alpha.3
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: |
+        Tell us what operating system you use, what version of Node, terminal, etc.
+        - **OS**: Ubuntu 20.04
+        - **Node**: 13.14.0
+      value: |
+        - OS:
+        - Node:
+    validations:
+      required: true
