@@ -1,0 +1,45 @@
+name: 💡 Idea or Feature proposal
+description: Do you want to propose a feature? Do you have an idea? 
+title: "💡 Your proposal or idea here"
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Hello dear user! Thanks for taking the time to help AlexGit to be better.
+  - type: textarea
+    id: bug-relate
+    attributes:
+      label: Is your proposal related to an existing bug or problem?
+      description: Describe the problem you encountered or paste the link to the reported bug.
+      placeholder: Leave it empty if it is not related to an existing problem.
+    validations:
+      required: false
+  - type: textarea
+    id: idea
+    attributes:
+      label: What did you come up with? What is your idea?
+      description: "Provide a clear and concise description about yor idea."
+    validations:
+      required: true
+  - type: input
+    id: alexgit-version
+    attributes:
+      label: AlexGit version
+      description: What version of AlexGit are you using?
+      placeholder: 0.0.1-alpha.3
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: |
+        Is this request for a specific system, terminal or tool?
+        - **OS**: Ubuntu 20.04
+        - **Terminal**: zsh
+      value: |
+        - OS:
+        - Terminal:
+    validations:
+      required: false

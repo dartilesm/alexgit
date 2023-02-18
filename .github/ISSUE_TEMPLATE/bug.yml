@@ -1,0 +1,48 @@
+name: 🐛 Bug Report
+description: Didn't AlexGit work as expected? Did you find an error? Please report it here!
+title: "🐛 Your title here"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Hello dear user! Thanks for taking the time to help AlexGit to be better.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: If you also could add an image or video, it would be helpful!
+      placeholder: A bug happened!
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How to reproduce it?
+      description: "How do you trigger this bug? Please walk us through it step by step."
+      value: |
+        1.
+        2.
+        3.
+        ...
+  - type: input
+    id: alexgit-version
+    attributes:
+      label: AlexGit version
+      description: What version of AlexGit did you get the error in? You will find in when running `alexgit`.
+      placeholder: 0.0.1-alpha.3
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: |
+        Tell us what operating system you use, what version of Node, terminal, etc.
+        - **OS**: Ubuntu 20.04
+        - **Node**: 13.14.0
+      value: |
+        - OS:
+        - Node:
+    validations:
+      required: true
