@@ -68,8 +68,8 @@ class Alexgit {
         const faceExpression = mood ? this.moodExpression[mood] : `${eye}${chalk.green(mouth)}${eye}`
 
 this.log(`             
- ╭──⌂──╮    ${chalk.bgHex("#66189A")(chalk.white(` AlexGit `))} › ${chalk.bgGray(chalk.white(` v${this.version} `))}
-[│${faceExpression}│]  ${chalk.yellow(message)}
+ ╭──⌂──╮   ${chalk.bgHex("#66189A")(chalk.white(` AlexGit `))} › ${chalk.bgGray(chalk.white(` v${this.version} `))}
+[│${faceExpression}│] ${chalk.yellow(message)}
  ╰─────╯
 `)
     
