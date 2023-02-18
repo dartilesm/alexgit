@@ -21,9 +21,9 @@ async function runAlexGit() {
 
     if (commitArg && APIKey) return messages.initialCommit;
 
-    if (!commitArg && !APIKey) return [...messages.apiKeyNotFound];
+    if (!commitArg && !APIKey) return [...messages.greeting, ...messages.apiKeyNotFound];
 
-    if (!commitArg && APIKey) return messages.welcome;
+    if (!commitArg && APIKey) return [...messages.greeting, ...messages.welcome]
   }
 
   await alexgit.say(getAlexgitInitialMessage());
@@ -58,7 +58,6 @@ async function runAlexGit() {
   await sleep(1000);
   spinner.stop();
 
-  if(!commitArg) renderVerticalLine();
   const commitSelected = await renderPrompt("commitList", { choices: suggestedCommit.data });
 
   const commitConfirmed = await renderPrompt("confirmCommit", { initial: commitSelected });
