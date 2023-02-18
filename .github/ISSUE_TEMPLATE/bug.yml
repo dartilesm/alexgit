@@ -14,7 +14,6 @@ body:
       description: If you also could add an image or video, it would be helpful!
       placeholder: Tell us what you see!
       value: "A bug happened!"
-      render: markdown
     validations:
       required: true
   - type: textarea
@@ -27,7 +26,6 @@ body:
         2.
         3.
         ...
-      render: markdown
   - type: input
     id: alexgit-version
     attributes:
