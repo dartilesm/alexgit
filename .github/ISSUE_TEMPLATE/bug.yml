@@ -1,6 +1,6 @@
 name: 🐛 Bug Report
 description: Didn't AlexGit work as expected? Did you find an error? Please report it here!
-title: ":bug: Your title here"
+title: "🐛 Your title here"
 labels: ["bug"]
 body:
   - type: markdown
