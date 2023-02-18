@@ -25,7 +25,7 @@ function makeCommit(commit) {
 
     const message = !error ? `✔ ${categorizeMessage({ type: "success", message: data.fileModified })}
     
-           ${data.commitData}` : `✖ ${categorizeMessage({ type: "error", message: `${chalk.blueBright(username)}, it looks like ${chalk.red("you have no staged files")}! Please stage your files before committing them 👾` })}`
+            ${data.commitData}` : `✖ ${categorizeMessage({ type: "error", message: `${chalk.blueBright(username)}, it looks like ${chalk.red("you have no staged files")}! Please stage your files before committing them 👾` })}`
 
     console.log(message)
     process.exit()
