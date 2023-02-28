@@ -1,6 +1,6 @@
 {
   "name": "alexgit",
-  "version": "0.0.1-alpha.7",
+  "version": "0.0.1-alpha.8",
   "description": "Alexgit is a virtual assistant that will help you writing amazing and beautiful commits.",
   "main": "lib/index.js",
   "bin": "lib/index.js",
