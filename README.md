@@ -29,7 +29,9 @@ Just type the following command and AlexGit will guide you through the process.
 ```console
 alexgit
 ```
-![AlexGit](https://user-images.githubusercontent.com/21966352/219902122-e913b610-5911-480a-9965-6905ee41e03f.gif)
+
+![AlexGit](https://user-images.githubusercontent.com/21966352/221975332-4d5cff15-fb9e-4bcf-8864-44171798e630.gif)
+
 
 #### Commands
 |Command| Type | Description|
