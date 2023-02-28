@@ -1,12 +1,12 @@
 {
   "name": "alexgit",
-  "version": "0.0.1-alpha.7",
+  "version": "0.0.1-alpha.8",
   "description": "Alexgit is a virtual assistant that will help you writing amazing and beautiful commits.",
   "main": "lib/index.js",
   "bin": "lib/index.js",
   "type": "module",
   "scripts": {
-    "build": "swc index.js -d lib && swc ./src/**/*.js -d lib/src",
+    "build": "swc index.js -d lib && swc ./src/**.js -d lib/src",
     "prepare": "pnpm run build",
     "test": "echo \"Info: no test specified\" && exit 0"
   },
