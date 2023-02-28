@@ -6,7 +6,7 @@
   "bin": "lib/index.js",
   "type": "module",
   "scripts": {
-    "build": "swc ./bin/*.js -d lib && swc ./src/*.js -d lib/src",
+    "build": "swc index.js -d lib && swc ./src/**/*.js -d lib/src",
     "prepare": "pnpm run build",
     "test": "echo \"Info: no test specified\" && exit 0"
   },
