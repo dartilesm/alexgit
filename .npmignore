@@ -1,4 +1,4 @@
 .github/*
 .swcrc
 bin
-src
+src/
