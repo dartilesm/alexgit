@@ -1,0 +1,23 @@
+{
+    "$schema": "https://json.schemastore.org/swcrc",
+    "jsc": {
+      "parser": {
+        "syntax": "ecmascript",
+        "jsx": false,
+        "dynamicImport": false,
+        "privateMethod": false,
+        "functionBind": false,
+        "exportDefaultFrom": false,
+        "exportNamespaceFrom": false,
+        "decorators": false,
+        "decoratorsBeforeExport": false,
+        "topLevelAwait": true,
+        "importMeta": false
+      },
+      "transform": null,
+      "target": "es2015",
+      "loose": true,
+      "externalHelpers": false
+    },
+    "minify": true
+  }
