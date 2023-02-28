@@ -2,16 +2,17 @@
   "name": "alexgit",
   "version": "0.0.1-alpha.4",
   "description": "Alexgit is a virtual assistant that will help you writing amazing and beautiful commits.",
+  "main": "lib/index.js",
+  "bin": "lib/index.js",
   "type": "module",
-  "main": "bin/index.js",
-  "bin": "bin/index.js",
   "scripts": {
-    "build": "echo \"Info: no build specified\" && exit 0",
+    "prepare": "swc ./bin/*.js -d lib && swc ./src/*.js -d lib/src",
     "test": "echo \"Info: no test specified\" && exit 0"
   },
   "dependencies": {
     "chalk": "^5.2.0",
     "cohere-ai": "^5.0.2",
+    "dotenv": "^16.0.3",
     "enquirer": "^2.3.6",
     "log-update": "^5.0.1",
     "ora": "^6.1.2",
@@ -39,6 +40,7 @@
   },
   "license": "ISC",
   "devDependencies": {
-    "dotenv": "^16.0.3"
+    "@swc/cli": "^0.1.62",
+    "@swc/core": "^1.3.37"
   }
 }
