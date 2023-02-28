@@ -1,4 +1,4 @@
-name: Node.js Package
+name: Prepare package and publish
 
 on:
   release:
@@ -12,7 +12,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm test
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - run: pnpm run test
+      - run: pnpm run build
 
   publish-gpr:
     needs: build
